@@ -4,17 +4,36 @@ let guess = []
 let answer = [] //word being guessed each round
 let wrongGuess = 0
 
-// takes a random index of the words array and pushes place holders on the board for each letter and also 
-const startGame = () => {
+// takes a random index of the words array and pushes place holders on the board for each letter 
+const startRound = () => {
   const randomWord = words[Math.floor(Math.random() * words.length)].split('')
+  console.log(`this is the random word ${randomWord}`)
   const rightAnswer = answer.push(randomWord)
   const boardSetUp = randomWord.forEach(() => guess.push('_'))
   const board = guess.join(' ')
-  console.log(board)
+  console.log(`this is the board ${board}`)
 }
 
-startGame()
-//let userGuess = if letter clicked is right reveal it on the board else wrongGuess++
+startRound()
+//let userGuess = if letter clicked is right reveal it on the board else wrongGuess++ each click should refresh userGuess before pushing a new letter.
+
+let userGuess = []
+
+const userClick = (e) => {
+  //check what letter user clicked
+  //userGuess.push(e.value)
+  // 
+}
+
+const handleUserGuess = () => {
+  if (answer.includes(userGuess.JSONStringify())) {
+    // reveal it on the board
+      // itterate over each indexOf answer
+      // once a match is made change the matching index of guess to that letter
+  } else {
+    wrongGuess ++
+  }
+}
 
 // if letter that users chose is included in answer variable display it at the right index.
 //if guess is wrong display a different emoji
