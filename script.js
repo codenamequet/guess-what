@@ -1,5 +1,6 @@
 const letters = document.getElementsByClassName('letters')
 // const availableLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+// availableLetters.forEach(v => console.log(v))
 
 const words = ['HOUSTON', 'TEXAS', 'MONEY', 'TORONTO', 'UNIVERSITY', 'CONTENDERS']
 let guess = [] // blank lines 
@@ -31,6 +32,15 @@ const handleLetters = () => {
     })
   }
 }
+
+// const handleLetters = () => {
+//   console.log(letters.length)
+//   letters.forEach(i => console.log(i.innerHTML))
+  // letters.forEach(i => i.addEventListener('click', () => {
+  //   console.log(letters[i].innerHTML)
+  //   userGuess.push(letters[i].innerHTML)
+  // }))
+// }
 //need to make function that makes letters[i] === availLetters[i] array
 handleLetters()
 
