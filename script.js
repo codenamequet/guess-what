@@ -1,67 +1,43 @@
-const letters = document.getElementsByClassName('letters')
-// const availableLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-// availableLetters.forEach(v => console.log(v))
-
 const words = ['HOUSTON', 'TEXAS', 'MONEY', 'TORONTO', 'UNIVERSITY', 'CONTENDERS']
 let guess = [] // blank lines 
 let answer = [] // word being guessed each round
 let userGuess = [] // letter that the user chose
+let lettersGuessed = []
 let wrongGuess = 0
 
 // takes a random index of the words array and pushes place holders on the board for each letter 
 const startRound = () => {
   const randomWord = words[Math.floor(Math.random() * words.length)].split('')
-  console.log(`this is the random word ${randomWord} the length is ${randomWord.length}`)
-  console.log(randomWord)
-  // const rightAnswer = answer.push(randomWord)
+  console.log(`this is the random word ${randomWord}`)
   answer = randomWord
   const boardSetUp = randomWord.forEach(() => guess.push('_'))
   const board = guess.join(' ')
-  console.log(`this is the board ${board} the length is ${board.length}`)
 }
 
 startRound() // call this function in an event listener that handles starting the game
 // let userGuess = if letter clicked is right reveal it on the board else wrongGuess++ each click should refresh userGuess before pushing a new letter.
 
-const handleLetters = () => {
-  for (let i = 0; i <= letters.length; i++) {
-    console.log(letters[i].innerHTML)
-    letters[i].addEventListener('click', () => {
-      console.log(letters[i].innerHTML)
-      userGuess.push(letters[i].innerHTML)
-    })
+const handleUserGuess = document.addEventListener('keyup', (e) => {
+  userGuess.push(e.key)
+  console.log(`this is the letter:`, e.key)
+  if (answer.includes(userGuess[0])) {
+    // for loop that looks to see if userGuess === answer[i] change guess[i] to userGuess
+    for(let i = 0; i < answer.length; i++) {
+      if (userGuess[0] === answer[i]) {
+        guess[i] = userGuess[0]
+      }
+    }
+    lettersGuessed.push(userGuess[0])
+    userGuess = []
   }
-}
-
-// const handleLetters = () => {
-//   console.log(letters.length)
-//   letters.forEach(i => console.log(i.innerHTML))
-  // letters.forEach(i => i.addEventListener('click', () => {
-  //   console.log(letters[i].innerHTML)
-  //   userGuess.push(letters[i].innerHTML)
-  // }))
-// }
-//need to make function that makes letters[i] === availLetters[i] array
-handleLetters()
-
-//compare guess array to every index of the answer array
-  //if userGuess is a match to any index change the guess value at that index to that letter (indexOf)
-  // else wrongGuess+++
-  // refresh guess
-const handleUserGuess = () => {
-  answer.forEach(() => answer.indexOf(userGuess).console.log('it worked!'))
-  // console.log('working')
-  // if (JSON.stringify(answer) === JSON.stringify(userGuess)) {
-    // userGuess.pop()
-  // } else {
-  //   wrongGuess ++
-  //   userGuess.pop()
+  else {
+    wrongGuess++
+    console.log(mindBlown())
+    lettersGuessed.push(userGuess[0])
+    userGuess = []
   }
-// }
+})
 
-handleUserGuess()
-
-// if letter that users chose is included in answer variable display it at the right index.
 // if guess is wrong display a different emoji
 const mindBlown = () => {
   if (wrongGuess === 0) {
@@ -89,5 +65,3 @@ const mindBlown = () => {
 }
 
 mindBlown()
-
-handleLetters()
