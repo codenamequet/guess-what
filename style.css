@@ -1,0 +1,42 @@
+body {
+    background: url('images/pan-african-flag.jpg');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh
+}
+.instructions{
+    /* border: solid black 2px; */
+    width: 95vw;
+    /* margin-top: 20vh; */
+    font-size: 24px;
+    /* float: right; */
+}
+.game-board {
+    text-align: center;
+    padding-top: 10vh;
+    font-size: 72px;
+    color: red;
+}
+.guesses {
+    border: solid black 2px;
+    width: 40vw;
+    margin-top: 20vh;
+    padding-bottom: 18vh;
+    font-size: 36px;
+    float: left;
+}
+/* .score-board {
+    font-size: 24px;
+    width: 10vw;
+    border: solid black 2px;
+    float: center;
+    margin-top: 20px;
+} */
+.emoji-container {
+    /* border: solid black 2px; */
+    width: 50vw;
+    font-size: 150px;
+    /* margin-left: 40vw; */
+    margin-top: 20vh;
+    text-align: center;
+    float: right;
+}
